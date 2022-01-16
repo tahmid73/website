@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Topbar from './components/topbar';
+import Skill from './components/skill';
+import About from './components/about';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <div class="">
+    <div class="">
+    <Topbar/>
+    </div>
+    <div class="">
+      <About/>
+      <Skill/>
+    </div>
+  </div>,
   document.getElementById('root')
 );
 
