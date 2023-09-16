@@ -27,4 +27,3 @@ jobs:
           rm -f ssh_key
         env:
             SSH_PRIVATE_KEY: ${{ secrets.ssh_key }}
-      # You can add more steps here, such as restarting the web server on the VM.
