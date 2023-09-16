@@ -1,0 +1,30 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy
+        run: |
+          # You can use SSH or any other method to copy the built app to your Azure VM.
+          # Example using SSH and SCP:
+          scp -i SSH_KEY -r ./build/* user@azure-vm-ip:/usr/share/nginx/html
+          scp -r ./build/* tahmi73@azure-vm-ip:/path/to/your/web/root
+          rm -f ssh_key
+        env:
+            SSH_PRIVATE_KEY: ${{ secrets.ssh_key }}
+      # You can add more steps here, such as restarting the web server on the VM.
